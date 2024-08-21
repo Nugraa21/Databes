@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Table with Excel Import and Export</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add SheetJS library -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h1>CRUD Table with Excel Import and Export</h1>
+
+    <!-- Form for adding new data -->
+    <form id="dataForm">
+        <input type="text" id="data" placeholder="Nomor" required>
+        <input type="text" id="name" placeholder="Nama" required>
+        <select id="type" required>
+            <option value="" disabled selected>Type</option>
+            <option value="text">Text</option>
+            <option value="code">Code</option>
+            <option value="link">Link</option>
+            <option value="folder">Folder</option>
+        </select>
+        <input type="text" id="dataContent" placeholder="Isi Data" required>
+        <select id="description" required>
+            <option value="" disabled selected>Keterangan</option>
+            <option value="Sudah">Sudah</option>
+            <option value="Belum">Belum</option>
+        </select>
+        <button type="submit">Add</button>
+    </form>
+
+    <!-- Form for uploading Excel files -->
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept=".xlsx, .xls">
+        <button type="submit">Upload Excel</button>
+    </form>
+
+    <!-- Button to download data as Excel -->
+    <button id="downloadButton">Download as Excel</button>
+
+    <!-- Table for displaying data -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nomor</th>
+                <th>Nama</th>
+                <th>Type</th>
+                <th>Isi Data</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Rows will be dynamically generated -->
+        </tbody>
+    </table>
+
+    <!-- Modal for Edit and Delete -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit/Delete Entry</h2>
+            <form id="editForm">
+                <input type="text" id="editData" required>
+                <input type="text" id="editName" required>
+                <select id="editType" required>
+                    <option value="text">Text</option>
+                    <option value="code">Code</option>
+                    <option value="link">Link</option>
+                    <option value="folder">Folder</option>
+                </select>
+                <input type="text" id="editDataContent" required>
+                <select id="editDescription" required>
+                    <option value="Sudah">Sudah</option>
+                    <option value="Belum">Belum</option>
+                </select>
+                <div class="modal-buttons">
+                    <button type="submit">Save</button>
+                    <button type="button" id="deleteButton">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
